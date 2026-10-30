@@ -16,6 +16,13 @@ DocMind retrieves the most relevant passages, cites where each answer came from,
 - **Measured, not guessed.** A labelled evaluation set reports recall@k and MRR, and CI blocks merges below the threshold.
 - **Grounded generation.** With an API key, Claude answers only from retrieved context and says when the answer isn't there.
 
+## Gallery
+| How it works | Evaluation in CI |
+|---|---|
+| ![Pipeline from question to cited answer](docs/assets/pipeline.gif) | ![Evaluation run output with recall, MRR and misses](docs/assets/eval_run.gif) |
+
+**[Watch the 15-second walkthrough (MP4)](docs/assets/walkthrough.mp4)**
+
 ## Architecture
 ![Architecture diagram](docs/assets/architecture.svg)
 
