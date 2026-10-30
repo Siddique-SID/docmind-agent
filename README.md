@@ -33,10 +33,25 @@ data/*.md ──► ingest (chunk) ──► retrieve (TF-IDF) ──► agent �
 eval/questions.jsonl ──► run_eval.py ──► recall@k, MRR ──► CI gate
 ```
 
+## Retrievers
+Choose the retrieval method with the `DOCMIND_RETRIEVER` environment variable:
+
+| Mode | Needs | Description |
+|---|---|---|
+| `tfidf` (default) | nothing | Lexical TF-IDF retrieval, fully offline |
+| `embedding` | `OPENAI_API_KEY` | Dense embeddings (`text-embedding-3-small` by default) |
+| `hybrid` | `OPENAI_API_KEY` | Reciprocal rank fusion of TF-IDF and embedding rankings |
+
+```bash
+DOCMIND_RETRIEVER=hybrid OPENAI_API_KEY=... PYTHONPATH=src python eval/run_eval.py
+```
+
 ## Results
 | Version | Retriever | Recall@3 | MRR | Notes |
 |---|---|---|---|---|
 | v0.1 | TF-IDF | - | - | Scaffold on 3 sample documents |
+| v0.4 | Embedding | pending | pending | Run with `DOCMIND_RETRIEVER=embedding` and an API key |
+| v0.4 | Hybrid | pending | pending | Run with `DOCMIND_RETRIEVER=hybrid` and an API key |
 | v0.2 | TF-IDF (baseline) | 0.933 | 0.789 | 30 questions over 29 FastAPI docs pinned to commit `79cab5b` (MIT). Misses: multi-parameter bodies, UUID/date types |
 
 Questions are paraphrased from the documents rather than copied, so keyword overlap alone does not guarantee a hit. Corpus: FastAPI documentation, MIT licensed, downloaded by `scripts/fetch_corpus.py` at a pinned commit so numbers are reproducible.

@@ -1,6 +1,7 @@
 """Retrieval evaluation: recall@K and MRR over eval/questions.jsonl.
 Exits non-zero if recall falls below THRESHOLD, so CI fails on regressions."""
 import json
+import os
 import pathlib
 import sys
 
@@ -8,7 +9,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
 from docmind.ingest import load_documents  # noqa: E402
-from docmind.retrieve import Retriever  # noqa: E402
+from docmind.retrieve import make_retriever  # noqa: E402
 
 K = 3
 THRESHOLD = 0.8
@@ -17,7 +18,8 @@ THRESHOLD = 0.8
 def main() -> int:
     lines = (ROOT / "eval" / "questions.jsonl").read_text(encoding="utf-8").splitlines()
     questions = [json.loads(line) for line in lines if line.strip()]
-    retriever = Retriever(load_documents(ROOT / "data" / "fastapi_docs"))
+    mode = os.getenv("DOCMIND_RETRIEVER", "tfidf")
+    retriever = make_retriever(load_documents(ROOT / "data" / "fastapi_docs"), mode)
 
     hits, reciprocal_rank_sum = 0, 0.0
     misses = []
@@ -34,6 +36,7 @@ def main() -> int:
 
     recall = hits / len(questions)
     report = {
+        "retriever": mode,
         "questions": len(questions),
         f"recall@{K}": round(recall, 3),
         "mrr": round(reciprocal_rank_sum / len(questions), 3),
