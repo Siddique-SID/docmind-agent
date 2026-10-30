@@ -6,10 +6,10 @@ from pydantic import BaseModel
 
 from .agent import answer
 from .ingest import load_documents
-from .retrieve import Retriever
+from .retrieve import make_retriever
 
 DATA_DIR = os.getenv("DOCMIND_DATA", "data/sample")
-retriever = Retriever(load_documents(DATA_DIR))
+retriever = make_retriever(load_documents(DATA_DIR))
 app = FastAPI(title="DocMind Agent", version="0.1.0")
 
 

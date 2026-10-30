@@ -8,7 +8,7 @@ import pytest  # noqa: E402
 
 from docmind.agent import answer  # noqa: E402
 from docmind.ingest import chunk_text, load_documents  # noqa: E402
-from docmind.retrieve import Retriever  # noqa: E402
+from docmind.retrieve import EmbeddingRetriever, HybridRetriever, Retriever, make_retriever  # noqa: E402
 
 
 def test_chunk_text_overlaps():
@@ -46,3 +46,45 @@ def test_answer_refuses_when_nothing_matches(monkeypatch):
     retriever = Retriever(load_documents(ROOT / "data" / "sample"))
     result = answer("zebra spaceship quantum violin", retriever)
     assert result["mode"] == "none"
+
+
+KEYWORDS = ["leave", "expense", "receipt", "hotel", "laptop", "meeting", "sick", "travel"]
+
+
+def fake_embed(texts):
+    """Deterministic keyword-count embedding so tests run without an API key."""
+    import numpy as np
+
+    vectors = []
+    for text in texts:
+        lowered = text.lower()
+        vectors.append([lowered.count(word) for word in KEYWORDS] or [0])
+    return np.array(vectors, dtype=np.float32) + 1e-6
+
+
+def test_embedding_retriever_finds_relevant_document():
+    chunks = load_documents(ROOT / "data" / "sample")
+    retriever = EmbeddingRetriever(chunks, embed=fake_embed)
+    hits = retriever.search("how much sick leave", k=1)
+    assert hits[0][0].doc_id == "leave_policy.md"
+
+
+def test_hybrid_retriever_returns_k_unique_results():
+    chunks = load_documents(ROOT / "data" / "sample")
+    retriever = HybridRetriever(chunks, embed=fake_embed)
+    hits = retriever.search("hotel limit abroad", k=3)
+    keys = [(c.doc_id, c.chunk_id) for c, _ in hits]
+    assert len(keys) == len(set(keys)) == 3
+    assert hits[0][0].doc_id == "expense_policy.md"
+
+
+def test_make_retriever_defaults_to_tfidf(monkeypatch):
+    monkeypatch.delenv("DOCMIND_RETRIEVER", raising=False)
+    chunks = load_documents(ROOT / "data" / "sample")
+    assert isinstance(make_retriever(chunks), Retriever)
+
+
+def test_make_retriever_rejects_unknown_mode():
+    chunks = load_documents(ROOT / "data" / "sample")
+    with pytest.raises(ValueError):
+        make_retriever(chunks, mode="magic")

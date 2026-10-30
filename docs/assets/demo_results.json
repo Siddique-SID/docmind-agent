@@ -1,0 +1,68 @@
+[
+  {
+    "question": "How do I run a function after sending the response back to the client?",
+    "answer": "and Security. In this example, when the client requests an item by an ID that doesn't exist, raise an exception with a status code of `404`: {* ../../docs_src/handling_errors/tutorial001_py310.py hl[11] *} ### The resulting response { #the-resulting-response } If the client requests `http://example.com/items/foo` (an `item_id` `\"foo\"`), that client will receive an HTTP status code of 200, and a JSON response of: ```JSON { \"item\": \"The Foo Wrestlers\" } ``` But if the client requests `http://example.com/items/bar` (a non-existent `item_id` `\"bar\"`), that client will receive an HTTP status code of 404 (the \"not found\" error), and a JSON response of: ```JSON { \"detail\": \"Item not found\" } ``` /// tip When raising an `HTTPException`, you can pass any value that can be converted",
+    "sources": [
+      {
+        "doc": "handling-errors.md",
+        "chunk": 3,
+        "score": 0.137
+      },
+      {
+        "doc": "middleware.md",
+        "chunk": 1,
+        "score": 0.104
+      },
+      {
+        "doc": "background-tasks.md",
+        "chunk": 0,
+        "score": 0.1
+      }
+    ],
+    "mode": "extractive"
+  },
+  {
+    "question": "How do I customise the title, version and description of the API documentation?",
+    "answer": "# Metadata and Docs URLs { #metadata-and-docs-urls } You can customize several metadata configurations in your **FastAPI** application. ## Metadata for API { #metadata-for-api } You can set the following fields that are used in the OpenAPI specification and the automatic API docs UIs: | Parameter | Type | Description | |------------|------|-------------| | `title` | `str` | The title of the API. | | `summary` | `str` | A short summary of the API. <small>Available since OpenAPI 3.1.0, FastAPI 0.99.0.</small> | | `description` | `str` | A short description of the API. It can use Markdown. | | `version` | `str` | The version of the API. This is the version of your own application, not of OpenAPI. For example",
+    "sources": [
+      {
+        "doc": "metadata.md",
+        "chunk": 0,
+        "score": 0.24
+      },
+      {
+        "doc": "path-params.md",
+        "chunk": 3,
+        "score": 0.151
+      },
+      {
+        "doc": "response-model.md",
+        "chunk": 13,
+        "score": 0.085
+      }
+    ],
+    "mode": "extractive"
+  },
+  {
+    "question": "Which origins can be allowed to make cross-origin requests?",
+    "answer": "- A list of origins that should be permitted to make cross-origin requests. E.g. `['https://example.org', 'https://www.example.org']`. You can use `['*']` to allow any origin. * `allow_origin_regex` - A regex string to match against origins that should be permitted to make cross-origin requests. e.g. `'https://.*\\.example\\.org'`. * `allow_methods` - A list of HTTP methods that should be allowed for cross-origin requests. Defaults to `['GET']`. You can use `['*']` to allow all standard methods. * `allow_headers` - A list of HTTP request headers that should be supported for cross-origin requests. Defaults to `[]`. You can use `['*']` to allow all headers. The `Accept`, `Accept-Language`, `Content-Language` and `Content-Type` headers are always allowed for [simple CORS requests](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests). * `allow_credentials` - Indicate that cookies should be",
+    "sources": [
+      {
+        "doc": "cors.md",
+        "chunk": 4,
+        "score": 0.428
+      },
+      {
+        "doc": "cors.md",
+        "chunk": 3,
+        "score": 0.24
+      },
+      {
+        "doc": "cors.md",
+        "chunk": 0,
+        "score": 0.19
+      }
+    ],
+    "mode": "extractive"
+  }
+]
