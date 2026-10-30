@@ -35,9 +35,10 @@ eval/questions.jsonl ──► run_eval.py ──► recall@k, MRR ──► CI 
 ## Results
 | Version | Retriever | Recall@3 | MRR | Notes |
 |---|---|---|---|---|
-| v0.1 | TF-IDF | 1.00 | 1.00 | 12 questions, 3 sample documents |
+| v0.1 | TF-IDF | - | - | Scaffold on 3 sample documents |
+| v0.2 | TF-IDF (baseline) | 0.933 | 0.822 | 30 questions over 29 FastAPI docs (MIT). Misses: multi-parameter bodies, UUID/date types |
 
-The sample set is small by design. The next version adds a larger corpus and harder, paraphrased questions so the numbers mean more.
+Questions are paraphrased from the documents rather than copied, so keyword overlap alone does not guarantee a hit. Corpus: FastAPI documentation, MIT licensed (see `data/fastapi_docs/LICENSE_FASTAPI`).
 
 ## Roadmap
 - [ ] Embedding retriever and hybrid (BM25 + vector) search

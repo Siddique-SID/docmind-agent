@@ -17,7 +17,7 @@ THRESHOLD = 0.8
 def main() -> int:
     lines = (ROOT / "eval" / "questions.jsonl").read_text(encoding="utf-8").splitlines()
     questions = [json.loads(line) for line in lines if line.strip()]
-    retriever = Retriever(load_documents(ROOT / "data" / "sample"))
+    retriever = Retriever(load_documents(ROOT / "data" / "fastapi_docs"))
 
     hits, reciprocal_rank_sum = 0, 0.0
     misses = []

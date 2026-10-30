@@ -1,12 +1,30 @@
-{"question": "How many days of paid annual leave do employees get?", "expected_doc": "leave_policy.md"}
-{"question": "How many days can I carry over unused leave?", "expected_doc": "leave_policy.md"}
-{"question": "How long is paid parental leave for the primary carer?", "expected_doc": "leave_policy.md"}
-{"question": "When do I need to tell my manager I am sick?", "expected_doc": "leave_policy.md"}
-{"question": "Do I need a receipt for a 30 pound expense?", "expected_doc": "expense_policy.md"}
-{"question": "What is the hotel limit abroad?", "expected_doc": "expense_policy.md"}
-{"question": "Is alcohol reimbursable on business travel?", "expected_doc": "expense_policy.md"}
-{"question": "How long do I have to submit an expense?", "expected_doc": "expense_policy.md"}
-{"question": "Where do I collect my laptop on my first day?", "expected_doc": "onboarding_guide.md"}
-{"question": "How many days a week can I work from the office?", "expected_doc": "onboarding_guide.md"}
-{"question": "When is the monthly all-hands meeting?", "expected_doc": "onboarding_guide.md"}
-{"question": "When are probation objectives reviewed?", "expected_doc": "onboarding_guide.md"}
+{"question": "How do I run a function after sending the response back to the client?", "expected_doc": "background-tasks.md"}
+{"question": "Which class do I import to schedule work that runs in the background?", "expected_doc": "background-tasks.md"}
+{"question": "Which origins can be allowed to make cross-origin requests?", "expected_doc": "cors.md"}
+{"question": "Can allow_origins use a wildcard when allow_credentials is True?", "expected_doc": "cors.md"}
+{"question": "How do I return an error response with a specific status code to the client?", "expected_doc": "handling-errors.md"}
+{"question": "What exception should I raise to send an HTTP error?", "expected_doc": "handling-errors.md"}
+{"question": "How can I add a minimum or maximum length check to a query parameter?", "expected_doc": "query-params-str-validations.md"}
+{"question": "How do I declare a query parameter that is optional?", "expected_doc": "query-params.md"}
+{"question": "How do I add validation constraints to a path parameter such as a numeric range?", "expected_doc": "path-params-numeric-validations.md"}
+{"question": "How do I declare a path parameter in a route?", "expected_doc": "path-params.md"}
+{"question": "How do I read a value sent in a cookie?", "expected_doc": "cookie-params.md"}
+{"question": "How do I serve a folder of static files from my application?", "expected_doc": "static-files.md"}
+{"question": "How do I set a custom HTTP status code for a path operation response?", "expected_doc": "response-status-code.md"}
+{"question": "Which library is used to write tests against the application without running a server?", "expected_doc": "testing.md"}
+{"question": "How do I send only the fields the client actually provided in a partial update?", "expected_doc": "body-updates.md"}
+{"question": "Which class lets me receive uploaded files in an endpoint?", "expected_doc": "request-files.md"}
+{"question": "How can I run code on every incoming request before it reaches the route?", "expected_doc": "middleware.md"}
+{"question": "How do I receive a request body that contains several parameters at once?", "expected_doc": "body-multiple-params.md"}
+{"question": "How do I define nested models for a request body?", "expected_doc": "body-nested-models.md"}
+{"question": "What is the difference between query parameters and a request body?", "expected_doc": "body.md"}
+{"question": "How do I handle form data sent with files in a request?", "expected_doc": "request-forms-and-files.md"}
+{"question": "How do I add a description and tags to my path operation for the docs?", "expected_doc": "path-operation-configuration.md"}
+{"question": "How do I customise the title, version and description of the API documentation?", "expected_doc": "metadata.md"}
+{"question": "How do I receive header values such as a user agent in an endpoint?", "expected_doc": "header-params.md"}
+{"question": "How do I group several query parameters into a single model?", "expected_doc": "query-param-models.md"}
+{"question": "How do I debug my application while it is running?", "expected_doc": "debugging.md"}
+{"question": "How do I stream JSON lines back to the client?", "expected_doc": "stream-json-lines.md"}
+{"question": "How do I send server-sent events from an endpoint?", "expected_doc": "server-sent-events.md"}
+{"question": "How do I change which fields are included when a response is serialised?", "expected_doc": "response-model.md"}
+{"question": "How do I handle a value like a UUID or date in a model field?", "expected_doc": "extra-data-types.md"}
