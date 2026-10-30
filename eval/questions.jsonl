@@ -1,0 +1,12 @@
+{"question": "How many days of paid annual leave do employees get?", "expected_doc": "leave_policy.md"}
+{"question": "How many days can I carry over unused leave?", "expected_doc": "leave_policy.md"}
+{"question": "How long is paid parental leave for the primary carer?", "expected_doc": "leave_policy.md"}
+{"question": "When do I need to tell my manager I am sick?", "expected_doc": "leave_policy.md"}
+{"question": "Do I need a receipt for a 30 pound expense?", "expected_doc": "expense_policy.md"}
+{"question": "What is the hotel limit abroad?", "expected_doc": "expense_policy.md"}
+{"question": "Is alcohol reimbursable on business travel?", "expected_doc": "expense_policy.md"}
+{"question": "How long do I have to submit an expense?", "expected_doc": "expense_policy.md"}
+{"question": "Where do I collect my laptop on my first day?", "expected_doc": "onboarding_guide.md"}
+{"question": "How many days a week can I work from the office?", "expected_doc": "onboarding_guide.md"}
+{"question": "When is the monthly all-hands meeting?", "expected_doc": "onboarding_guide.md"}
+{"question": "When are probation objectives reviewed?", "expected_doc": "onboarding_guide.md"}
