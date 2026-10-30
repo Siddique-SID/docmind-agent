@@ -13,8 +13,9 @@ Ask a question about a set of documents and get an answer with the source chunks
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+python scripts/fetch_corpus.py         # download the pinned FastAPI docs (evaluation corpus)
 PYTHONPATH=src pytest -q               # unit tests
-python eval/run_eval.py                # retrieval evaluation
+PYTHONPATH=src python eval/run_eval.py # retrieval evaluation
 PYTHONPATH=src uvicorn docmind.api:app --reload
 ```
 Then open http://127.0.0.1:8000/docs and try `POST /ask` with `{"question": "How many days of paid leave do I get?"}`.
@@ -36,9 +37,9 @@ eval/questions.jsonl ──► run_eval.py ──► recall@k, MRR ──► CI 
 | Version | Retriever | Recall@3 | MRR | Notes |
 |---|---|---|---|---|
 | v0.1 | TF-IDF | - | - | Scaffold on 3 sample documents |
-| v0.2 | TF-IDF (baseline) | 0.933 | 0.822 | 30 questions over 29 FastAPI docs (MIT). Misses: multi-parameter bodies, UUID/date types |
+| v0.2 | TF-IDF (baseline) | 0.933 | 0.789 | 30 questions over 29 FastAPI docs pinned to commit `79cab5b` (MIT). Misses: multi-parameter bodies, UUID/date types |
 
-Questions are paraphrased from the documents rather than copied, so keyword overlap alone does not guarantee a hit. Corpus: FastAPI documentation, MIT licensed (see `data/fastapi_docs/LICENSE_FASTAPI`).
+Questions are paraphrased from the documents rather than copied, so keyword overlap alone does not guarantee a hit. Corpus: FastAPI documentation, MIT licensed, downloaded by `scripts/fetch_corpus.py` at a pinned commit so numbers are reproducible.
 
 ## Roadmap
 - [ ] Embedding retriever and hybrid (BM25 + vector) search
