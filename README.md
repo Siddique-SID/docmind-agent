@@ -9,6 +9,14 @@ DocMind retrieves the most relevant passages, cites where each answer came from,
 
 ![Demo of a retrieval query returning a cited passage](docs/assets/demo.gif)
 
+## Maintainer and portfolio context
+
+Built and maintained by **Siddique Sayed**, an MSc Advanced Data Science and Artificial Intelligence graduate and Software Developer Intern at LMS, Liverpool. My broader work includes Python automation, React/TypeScript business applications and comparative machine-learning evaluation.
+
+DocMind focuses on document ingestion, a Python/FastAPI service, source citations and retrieval evaluation. The default lexical retriever runs without paid APIs. Embedding/hybrid code and optional Claude generation are separate modes; pending benchmark results and roadmap items below are not completed measurements or production guarantees.
+
+[LinkedIn](https://www.linkedin.com/in/siddiquesayed124) · [GitHub](https://github.com/Siddique-SID)
+
 ## Highlights
 - **Cited answers.** Every response lists the document and chunk it came from.
 - **Works offline.** The default TF-IDF retriever needs no API key or paid service.
